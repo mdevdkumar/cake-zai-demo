@@ -13,6 +13,7 @@ export default function Home({
 }) {
   const [transaction, setTransaction] = useState<Transaction | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isCompleteLoading, setIsCompleteLoading] = useState(false);
   const [selected, setSelected] = useState<PaymentMethod>(PaymentMethod.PayID);
 
   useEffect(() => {
@@ -24,11 +25,22 @@ export default function Home({
     });
   }, [params.transactionId]);
 
+  const onCompleteButtonPress = () => {
+    setIsCompleteLoading(true);
+    checkPaymentConfirmation();
+  };
+
   const checkPaymentConfirmation = async () => {
     apiRequest(`/api/transaction/${params.transactionId}`).then((response) => {
+      setIsCompleteLoading(false);
       setTransaction(response.data);
     });
   };
+
+  useEffect(() => {
+    const intervalId = setInterval(checkPaymentConfirmation, 5000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   if (isLoading || !transaction) {
     return (
@@ -93,9 +105,9 @@ export default function Home({
 
           <button
             className="bg-slate-950 text-white py-3 rounded-md shadow-lg hover:shadow-none transition-all"
-            onClick={checkPaymentConfirmation}
+            onClick={onCompleteButtonPress}
           >
-            Complete
+            {isCompleteLoading ? "Checking..." : "Complete"}
           </button>
         </div>
       </div>
