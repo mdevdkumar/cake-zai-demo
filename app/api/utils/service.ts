@@ -1,18 +1,13 @@
 import axios, { AxiosError } from "axios";
-import type {
-  RawAxiosRequestHeaders,
-  AxiosRequestHeaders,
-  AxiosResponse,
-  InternalAxiosRequestConfig,
-} from "axios";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
 import type { ApiRequestOptions } from "./types";
 
-const REQUEST_HEADERS: RawAxiosRequestHeaders = {
+const REQUEST_HEADERS = {
   Accept: "application/json",
   "Content-Type": "application/json",
 };
 const axiosInterceptor = {
-  requestInterceptor: (config: InternalAxiosRequestConfig) => config,
+  requestInterceptor: (config: AxiosRequestConfig) => config,
   responseInterceptor: (response: AxiosResponse) => response,
   errorInterceptor: (error: AxiosError) => {
     if (axios.isAxiosError(error)) {
@@ -35,12 +30,12 @@ export const apiRequest = <T>(
   url: string,
   {
     method = "get",
-    headers = {} as AxiosRequestHeaders,
+    headers = {},
     data,
     params = {},
     accessToken,
   }: ApiRequestOptions = {}
-): Promise<AxiosResponse<T, Error>> => {
+) => {
   const sendRequest = async () => {
     const apiInstance = axios.create();
     apiInstance.defaults.headers.common = REQUEST_HEADERS;
@@ -70,7 +65,7 @@ export const apiRequest = <T>(
       config.headers = {
         ...config.headers,
         ...headers,
-      } as AxiosRequestHeaders;
+      };
 
       config.params = params;
       return config;
