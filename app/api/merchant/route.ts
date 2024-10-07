@@ -105,7 +105,7 @@ const GetUser = async (request: UserRequestBody) => {
     userExists.users == undefined ||
     userExists.users.length == 0
   ) {
-    request.id = "buyer_" + new Date().getTime();
+    request.id = "merchant_" + new Date().getTime();
     const user = await client.users.createUser(request);
     return user.users!;
   } else {
