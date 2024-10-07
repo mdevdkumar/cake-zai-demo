@@ -8,6 +8,7 @@ export async function POST(request: Request) {
   const data = {
     merchant_id: body.transactions.user_id,
     amount: body.transactions.amount,
+    json: JSON.stringify(body),
   };
 
   const response = await markTransactionAsComplete(data);
