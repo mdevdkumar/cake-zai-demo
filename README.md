@@ -30,3 +30,7 @@ POST: https://cake-zai-demo.vercel.app/api/transaction
 ```
 
 A link will be created, open the link the Browser.
+
+## Link to get the Transaction Details
+
+GET: https://cake-zai-demo.vercel.app/api/transaction/{transactionId}
