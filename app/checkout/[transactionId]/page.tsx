@@ -76,7 +76,7 @@ export default function Home({
           </div>
         </div>
       </div>
-      <div className="flex-1 p-8 flex justify-center items-center text-slate-950">
+      <div className="flex-1 p-8 flex justify-center items-center text-slate-950 bg-slate-50">
         <div className="flex-1 flex flex-col gap-8">
           <div className="flex flex-col gap-3">
             <h2>Payment Method</h2>
