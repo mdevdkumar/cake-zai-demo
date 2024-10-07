@@ -21,7 +21,6 @@ export default function Home({
     apiRequest(`/api/transaction/${params.transactionId}`).then((response) => {
       setIsLoading(false);
       setTransaction(response.data);
-      console.log("Transaction", response.data);
     });
   }, [params.transactionId]);
 

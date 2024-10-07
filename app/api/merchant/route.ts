@@ -9,8 +9,6 @@ export async function POST(request: Request) {
 
   try {
     const token = await GetZaiToken();
-
-    console.log("Token", token);
     const user: User = await GetUser(body);
     var wallet: WalletAccount = await GetUserWallet(user.id!);
 

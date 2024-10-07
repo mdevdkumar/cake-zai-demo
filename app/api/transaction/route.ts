@@ -9,15 +9,16 @@ export async function POST(request: Request) {
   try {
     var merchant = await getMerchant(merchant_id);
 
-    console.log("Merchant", merchant);
-
     var transaction = await saveTransaction({
       merchant_id: merchant.id,
       amount,
     });
     return new Response(
-      JSON.stringify(`http://localhost:3000/checkout/${transaction.id}`),
-      { status: 200, headers: { "Content-Type": "application/json" } }
+      JSON.stringify(`${process.env.BASE_URL}/checkout/${transaction.id}`),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }
     );
   } catch (error: any) {
     if (error.isAxiosError) {
