@@ -8,7 +8,6 @@ export async function POST(request: Request) {
 
   try {
     var merchant = await getMerchant(merchant_id);
-
     var transaction = await saveTransaction({
       merchant_id: merchant.id,
       amount,
