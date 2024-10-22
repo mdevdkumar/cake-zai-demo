@@ -31,6 +31,11 @@ POST: https://cake-zai-demo.vercel.app/api/transaction
 
 A link will be created, open the link the Browser.
 
+## 3. Mimic a PayId Payment.
+As mentioned by Zai, in Pre live we can Mimic the payment for PayId, but this step is not required in Live environment.
+Step 6, in https://int-npp-master.platforms.prelive.assemblypayments.com/npp/receive-request
+
+
 ## Link to get the Transaction Details
 
 GET: https://cake-zai-demo.vercel.app/api/transaction/{transactionId}
