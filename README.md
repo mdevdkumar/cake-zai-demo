@@ -39,3 +39,11 @@ Step 6, in https://int-npp-master.platforms.prelive.assemblypayments.com/npp/rec
 ## Link to get the Transaction Details
 
 GET: https://cake-zai-demo.vercel.app/api/transaction/{transactionId}
+
+
+
+# Xano Scehma
+## Merchant Table Schema 
+```
+{"id":"uuid","created_at":"timestamp","merchant_id":"text","first_name":"text","last_name":"text","wallet_id":"uuid","virtual_account_id":"uuid","pay_id":"uuid","pay_id_email":"text","json":"json"}
+```
